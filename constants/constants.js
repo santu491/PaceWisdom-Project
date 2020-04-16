@@ -1,0 +1,9 @@
+export const ENTETR_NAME="Enter Name"
+export const ENTER_EMAIL="Enter email"
+export const ENTER_MOBILE_NO="Enter Mobile No"
+export const MANDATORY_FIELD="Please fill mandatory filelds"
+export const INAVALID_MOBILE_DIGIT_COUNT="Mobile number should be 10 digits"
+export const MOBILE_NO_SHOULD_DIGITS="Mobile number should contain digits only"
+export const INVALID_EMAIL="Invalid email"
+export const NO_VALIDATION=/^[0-9]*$/
+export const EMAIL_VALIDATION=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/

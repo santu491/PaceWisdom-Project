@@ -1,3 +1,4 @@
+import{Alert} from 'react-native'
 import * as actionTypes from './actionTypes'
 import axios from 'axios'
 
@@ -24,6 +25,7 @@ export const addEmployee = (data) => {
     return (dispatch) => {
         dispatch(postEmployeeStart())
         axios.post('https://pacewisdom-d9d3e.firebaseio.com/employees.json', data).then(response => {
+            Alert.alert("Data is submitted")
             dispatch(postEmployeeSuccess())
             dispatch(getEmployee())
         })

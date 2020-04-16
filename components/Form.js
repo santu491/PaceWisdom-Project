@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { addEmployee } from '../store/actionCreators'
 import Spinner from 'react-native-loading-spinner-overlay';
 import * as ImagePicker from 'expo-image-picker';
+import * as constant from '../constants/constants'
 
 class Form extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Form extends Component {
             form: {
                 name: {
                     value: '',
-                    placeholder: "Enter Name",
+                    placeholder: constant.ENTETR_NAME,
                     isRequired: true,
                     isTouched: false,
                     isValid: false,
@@ -21,7 +22,7 @@ class Form extends Component {
                 },
                 email: {
                     value: '',
-                    placeholder: "Enter email",
+                    placeholder: constant.ENTER_EMAIL,
                     isRequired: true,
                     isTouched: false,
                     isValid: false,
@@ -29,7 +30,7 @@ class Form extends Component {
                 },
                 mobileNo: {
                     value: '',
-                    placeholder: "Enter Mobile No",
+                    placeholder: constant.ENTER_MOBILE_NO,
                     isRequired: true,
                     isTouched: false,
                     isVlid: false,
@@ -51,24 +52,24 @@ class Form extends Component {
             case 'name':
                 if (value.length === 0) {
                     data.isValid = false
-                    data.error = "Field is required"
+                    data.error = constant.MANDATORY_FIELD
                 }
                 break;
 
             case 'mobileNo':
-                let noValidation = /^[0-9]*$/
+                let noValidation = constant.NO_VALIDATION
                 if (value.length === 0) {
                     data.isValid = false
-                    data.error = "Field is required"
+                    data.error = constant.MANDATORY_FIELD
                 }
                 else {
                     if (value.length !== 10) {
                         data.isValid = false
-                        data.error = "mobile no should be 10 digits"
+                        data.error = constant.INAVALID_MOBILE_DIGIT_COUNT
                     }
                     if (!noValidation.test(value)) {
                         data.isValid = false
-                        data.error = "mobile no should be digits"
+                        data.error = constant.MOBILE_NO_SHOULD_DIGITS
                     }
 
                 }
@@ -76,14 +77,14 @@ class Form extends Component {
                 break;
 
             case 'email':
-                let emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                let emailValidation = constant.EMAIL_VALIDATION
                 if (value.length === 0) {
                     data.isValid = false
-                    data.error = "Field is required"
+                    data.error = constant.MANDATORY_FIELD
                 }
                 else if (!emailValidation.test(value)) {
                     data.isValid = false
-                    data.error = "email is not valid"
+                    data.error = constant.INVALID_EMAIL
                 }
                 break;
 
@@ -148,7 +149,7 @@ class Form extends Component {
                 value={this.state.name}
                 onChangeText={(e) => this.changeTexthandler(e, item.id)}
             />
-            {this.state.isSubmitted ? (!item.config.isTouched ? <Text style={styles.errorMessage}>Field is required</Text> : !item.config.isValid && <Text style={styles.errorMessage}>{item.config.errorMessage}</Text>) : null}
+            {this.state.isSubmitted ? (!item.config.isTouched ? <Text style={styles.errorMessage}>{constant.MANDATORY_FIELD}</Text> : !item.config.isValid && <Text style={styles.errorMessage}>{item.config.errorMessage}</Text>) : null}
         </View>
     )
 
@@ -196,12 +197,15 @@ class Form extends Component {
                     keyExtractor={(item, index) => index}
                 />
                 <TouchableHighlight style={styles.submit}
+                    underlayColor="#ccc"
                     onPress={this.uploadImage}
                 >
                     <Text style={styles.submitText}>Add Image</Text>
                 </TouchableHighlight>
 
-                <TouchableHighlight style={styles.submit}
+                <TouchableHighlight
+                    underlayColor="#ccc"
+                    style={styles.submit}
                     onPress={this.submit}
                 >
                     <Text style={styles.submitText}>Submit</Text>
