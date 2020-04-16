@@ -1,8 +1,14 @@
 
-import {createStore,applyMiddleware} from 'redux'
+import {createStore,applyMiddleware,combineReducers} from 'redux'
 import thunk from 'redux-thunk'
-import employeeReducer from './reducers/Employee'
+import postEmployeeReducer from './reducers/PostEmployee'
+import getEmployeeReducer from './reducers/GetEmployee'
 
-const store=createStore(employeeReducer,applyMiddleware(thunk))
+const rootReducer=combineReducers({
+    getEmployee:getEmployeeReducer,
+    postEmployee:postEmployeeReducer
+})
+
+const store=createStore(rootReducer,applyMiddleware(thunk))
 
 export default store

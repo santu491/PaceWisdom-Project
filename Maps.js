@@ -9,14 +9,14 @@ export default class Maps extends React.Component {
       <View style={styles.container}>
         {/* <MapView style={styles.mapStyle} /> */}
         <MapView
-        style={styles.mapStyle} 
-    initialRegion={{
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    }}
-  />
+          style={styles.mapStyle}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
         {/* <Text>hello</Text> */}
       </View>
     );
@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-//   mapStyle: {
-//     width: Dimensions.get('window').width,
-//     height: Dimensions.get('window').height,
-//   },
-mapStyle: {
+  //   mapStyle: {
+  //     width: Dimensions.get('window').width,
+  //     height: Dimensions.get('window').height,
+  //   },
+  mapStyle: {
     width: "100%",
     height: "100%",
   },

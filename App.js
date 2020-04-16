@@ -1,42 +1,61 @@
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View,Text } from 'react-native';
-import Maps from './Maps'
-// import From from './components/Form'
-import { Provider} from 'react-redux'
+import {  StyleSheet, View,  } from 'react-native';
+import { Provider } from 'react-redux'
 import store from './store/store'
-// import {createMaterialTopTabNavigator} from  '@react-navigation/material-top-tabs'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Form from './components/Form';
 import EmployeesInformation from './components/EmployeesInformation';
+import EmployeeDetails from './components/EmployeeDetails'
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-// const Tab=createMaterialTopTabNavigator()
-const Tab=createBottomTabNavigator()
+const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator()
+
+
+
+const Employee = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="EmployeesInformation" component={EmployeesInformation}
+        options={{
+          headerShown: false
+        }}
+      />
+      <Stack.Screen name="EmployeeDetails" component={EmployeeDetails}
+        options={{
+          headerShown: false
+        }}
+      />
+    </Stack.Navigator>
+
+  )
+}
 
 export default function App(props) {
-    return (
-      <Provider store={store} >
+  return (
+    <Provider store={store} >
       <View style={styles.container}>
-        {/* {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer> */}
-             {/* <Maps/> */}
-        {/* <Form/> */}
+
+
         <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Form" component={Form} />
-          <Tab.Screen name="EmployeesInformation" component={EmployeesInformation}/>
-        </Tab.Navigator>
+          <Tab.Navigator>
+            <Tab.Screen name="Form" component={Form} />
+            <Tab.Screen name="Employee Info" component={Employee}
+              options={{
+                tabBarVisible: false
+              }}
+            />
+          </Tab.Navigator>
         </NavigationContainer>
       </View>
-      </Provider>
-    );
+    </Provider>
+  );
 
 }
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
