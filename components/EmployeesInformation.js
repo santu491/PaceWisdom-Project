@@ -7,6 +7,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Header from './Header'
 
 class Form extends Component {
+
+    //Render Empolyees 
     renderEmployees = (item, props) => (
         <TouchableHighlight
             underlayColor="#fffff"

@@ -7,6 +7,7 @@ const initialState = {
     error: null
 }
 
+// Create getEmployee Redaucer
 const getEmployeeReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.GET_EMPLOYEE_START:

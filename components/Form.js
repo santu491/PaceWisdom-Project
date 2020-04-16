@@ -41,6 +41,7 @@ class Form extends Component {
         }
     }
 
+    // Check validation for form
     checkValidation = (value, id) => {
         let data = {
             isValid: true,
@@ -91,6 +92,8 @@ class Form extends Component {
         return data
 
     }
+
+
     changeTexthandler = (value, id) => {
         let data = this.checkValidation(value, id)
         let updtaedForm = { ...this.state.form }
@@ -105,7 +108,7 @@ class Form extends Component {
 
     }
 
-
+    // Submit Form Response
     submit = () => {
         this.setState({ isSubmitted: true })
         let form = this.state.form
@@ -149,6 +152,7 @@ class Form extends Component {
         </View>
     )
 
+    // Get Image from gallery
     uploadImage = async () => {
         try {
             let result = await ImagePicker.launchImageLibraryAsync({

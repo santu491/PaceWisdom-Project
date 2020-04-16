@@ -6,6 +6,7 @@ const initialState = {
     error: null
 }
 
+// Create post employee reducer
 const postEmployeeReducer = (state = initialState, action) => {
     switch (action.type) {
 

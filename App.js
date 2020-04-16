@@ -13,8 +13,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
-
-
 const Employee = () => {
   return (
     <Stack.Navigator>
