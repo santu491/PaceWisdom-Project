@@ -3,6 +3,7 @@ import { Text, View, Image, StyleSheet } from 'react-native'
 import MapView from 'react-native-maps'
 import Header from './Header'
 import styles from '../Styles/styles'
+import Map from './Map'
 
 const EmployeeDetails = (props) => {
     const { employee } = props.route.params
@@ -29,29 +30,9 @@ const EmployeeDetails = (props) => {
                         <Text style={styles.employeeValue}>: {employee.mobileNo}</Text>
                     </View>
                 </View>
-                <View style={styles.mapContainer}>
-                    <MapView
-                        style={styles.mapView}
-                        initialRegion={{
-                            latitude: employee.latitude,
-                            longitude: employee.longitude,
-                            latitudeDelta: 0.0922,
-                            longitudeDelta: 0.0421,
-                        }}
-                    >
-                        <MapView.Marker
-                            coordinate={
-                                {
-                                    latitude: employee.latitude,
-                                    longitude: employee.longitude,
-                                    latitudeDelta: 0.0922,
-                                    longitudeDelta: 0.0421,
-                                }
-                            }
-                        >
-                        </MapView.Marker>
-                    </MapView>
-                </View>
+                <Map
+                    latitude={employee.latitude} longitude={employee.longitude}
+                />
             </View>
         </View>
     )
