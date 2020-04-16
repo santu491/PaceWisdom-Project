@@ -2,6 +2,7 @@ import{Alert} from 'react-native'
 import * as actionTypes from './actionTypes'
 import axios from 'axios'
 
+const URL='https://pacewisdom-d9d3e.firebaseio.com/employees.json'
 const postEmployeeStart = () => {
     return {
         type: actionTypes.POST_EMPLOYEE_START
@@ -24,7 +25,7 @@ const postEmployeeFail = (error) => {
 export const addEmployee = (data) => {
     return (dispatch) => {
         dispatch(postEmployeeStart())
-        axios.post('https://pacewisdom-d9d3e.firebaseio.com/employees.json', data).then(response => {
+        axios.post(URL, data).then(response => {
             Alert.alert("Data is submitted")
             dispatch(postEmployeeSuccess())
             dispatch(getEmployee())
@@ -32,8 +33,6 @@ export const addEmployee = (data) => {
             .catch(error => {
                 dispatch(postEmployeeFail(error))
             })
-
-        // dispatch(uploadEmployeeFail())
     }
 }
 
@@ -63,7 +62,7 @@ const getEmployeeFail = (error) => {
 export const getEmployee = () => {
     return (dispatch) => {
         dispatch(getEmployeeStart())
-        axios.get('https://pacewisdom-d9d3e.firebaseio.com/employees.json').then(response => {
+        axios.get(URL).then(response => {
 
             let fetchData=[]
             for(let key in response.data){
