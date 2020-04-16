@@ -32,11 +32,9 @@ const getEmployeeReducer = (state = initialState, action) => {
                 isLoading: false
             }
 
-        // case actionTypes.DELETE_EMPLOYEE:
         case actionTypes.DELETE_EMPLOYEE_SUCCESS:
             return {
                 ...state,
-                // employeeData: state.employeeData.filter((employee) => employee.id !== action.employeeId)
                 employeeData: state.employeeData.filter((employee) => employee.id !== action.employeeId)
             }
         default:
