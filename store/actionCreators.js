@@ -103,13 +103,13 @@ const deleteEmployeefail = (error) => {
 export const deleteEmployee = (id) => {
     return (dispatch) => {
         dispatch(deleteEmployeeStart())
-        dispatch(deleteEmployeeSuccess(id))
-            // axios.delete('https://pacewisdom-d9d3e.firebaseio.com/employees.json', id).then(response => {
-            //     dispatch(deleteEmployeeSuccess(id))
-            //     dispatch(getEmployee())
-            // })
-            //     .catch(error => {
-            //         dispatch(deleteEmployeefail(error))
-            //     })
+     //  dispatch(deleteEmployeeSuccess(id))
+            axios.delete(`https://pacewisdom-d9d3e.firebaseio.com/employees/${id}.json`, id).then(response => {
+                dispatch(deleteEmployeeSuccess(id))
+                dispatch(getEmployee())
+            })
+                .catch(error => {
+                    dispatch(deleteEmployeefail(error))
+                })
         }   
 }
